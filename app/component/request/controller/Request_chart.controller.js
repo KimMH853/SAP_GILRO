@@ -27,7 +27,7 @@ sap.ui.define([
             var view = this.getView()
             //var oMonth = new Date().getFullYear() + "-" + (new Date().getMonth() + 1);
             //var oMonth = new Date().getFullYear() + "-" + ('0' + (new Date().getMonth() + 1)).slice(-2);
-            var month = new Date().getMonth() + 1;  // 1월은 0부터 시작하므로 1을 더해줍니다.
+            var month = new Date().getMonth() + 1;
             var oMonth = new Date().getFullYear() + "-" + (month < 10 ? '0' : '') + month;
             console.log(oMonth)
             const Request = await $.ajax({
@@ -51,12 +51,20 @@ sap.ui.define([
                     c++;
                 }
             }
+            
+            const aData = String(a / data.oData.length * 100)
             view.getModel("state").setProperty("/approve", a / data.oData.length * 100);
             view.getModel("state").setProperty("/wait", b / data.oData.length * 100);
             view.getModel("state").setProperty("/reject", c / data.oData.length * 100);
-            view.getModel("state").setProperty("/approvepercent", (a / data.oData.length * 100) + '%');
-            view.getModel("state").setProperty("/waitpercent", (b / data.oData.length * 100) + '%');
-            view.getModel("state").setProperty("/rejectpercent", (c / data.oData.length * 100) + '%');
+            view.getModel("state").setProperty("/approvepercent",   (a / data.oData.length* 100).toFixed(0) + '%');
+            //view.getModel("state").setProperty("/approvepercent", 42 + '%');
+            view.getModel("state").setProperty("/waitpercent", (b / data.oData.length * 100).toFixed(0) + '%');
+            view.getModel("state").setProperty("/rejectpercent", (c / data.oData.length * 100).toFixed(0) + '%');
+
+            console.log((b / data.oData.length * 100) + '%');
+
         }
+
+
     });
 });

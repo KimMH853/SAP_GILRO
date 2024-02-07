@@ -52,11 +52,8 @@
                                 <Label text="요청 상태" />
                                 <ObjectStatus
                                     id="ReqStatus"
-                                    text="{
-                                    path: 'RequestModel>/0/request_state',
-                                    formatter: '.formatter.statusText'
-                                    }"
-                                                                        state="{= ${RequestModel>/0/request_state} === 'A' ? 'Success' :
+                                    text="{path: 'RequestModel>/0/request_state',formatter: '.formatter.statusText'}"
+                                    state="{= ${RequestModel>/0/request_state} === 'A' ? 'Success' :
                                     ${RequestModel>/0/request_state} === 'C' ? 'Error' :
                                     'None'
                                     }"
@@ -82,7 +79,7 @@
                                 <Label text="물품 개수" />
                                 <Text
                                     id="ReqQty"
-                                    text="{RequestModel>/0/request_quantity}"
+                                    text="{path: 'RequestModel>/0/request_quantity', formatter: '.formatter.formatNumberWithCommas'}"
                                 />
                                 <layoutData>
                                     <layout:GridData span="XL6 L6 M3 S12" />
@@ -100,9 +97,13 @@
                             </VBox>
                             <VBox>
                                 <Label text="예상 가격" />
-                                <Text
+                                <!-- <Text
                                     id="ReqPrice"
                                     text="{RequestModel>/0/request_estimated_price}"
+                                /> -->
+                                <Text
+                                    id="ReqPrice"
+                                    text="{path: 'RequestModel>/0/request_estimated_price', formatter: '.formatter.formatNumberWithCommas'}원"
                                 />
                                 <layoutData>
                                     <layout:GridData span="XL6 L6 M3 S12" />

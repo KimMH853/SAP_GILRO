@@ -138,6 +138,22 @@
             "Request_chart"
           ],
           "layout": "OneColumn"
+        },
+        {
+          "name": "PopOver",
+          "pattern": "PopOver",
+          "target": [
+            "PopOver"
+          ],
+          "layout": "OneColumn"
+        },
+        {
+          "name": "ValueHelp",
+          "pattern": "ValueHelp",
+          "target": [
+            "ValueHelp"
+          ],
+          "layout": "OneColumn"
         }
       ],
       "targets": {
@@ -180,7 +196,23 @@
           "viewId": "Request_chart",
           "viewName": "Request_chart",
           "controlAggregation": "beginColumnPages"
+        },
+
+        "PopOver": {
+          "viewType": "XML",
+          "transition": "slide",
+          "viewId": "PopOver",
+          "viewName": "PopOver",
+          "controlAggregation": "beginColumnPages"
+        },
+        "ValueHelp": {
+          "viewType": "XML",
+          "transition": "slide",
+          "viewId": "ValueHelp",
+          "viewName": "ValueHelp",
+          "controlAggregation": "beginColumnPages"
         }
+        
       }
     },
     "rootView": {

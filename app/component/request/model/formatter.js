@@ -12,6 +12,15 @@ sap.ui.define([], function () {
                 default:
                     return sStatus;
             }
+        },
+
+        formatNumberWithCommas: function(sValue) {
+            
+            console.log("포멧넘버");
+            console.log(sValue);
+            console.log(typeof(sValue));
+            
+            return sValue.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); 
         }
     };
 });

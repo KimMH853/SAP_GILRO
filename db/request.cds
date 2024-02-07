@@ -23,3 +23,12 @@ entity Request_State {
     key request_state_key : String @title: '요청상태 키워드';
         request_state_kor : String @title: '요청상태 한국어';
 };
+
+entity Product {
+    key product_number   : Integer @title: '물품번호';
+        product_name     : String  @title: '물품이름';
+        product_quantity : Integer @title: '재고';
+        product_date     : String  @title: '등록날짜';
+        product_category : String  @title: '물품카테고리';
+        product_price    : Integer @title: '가격';
+};

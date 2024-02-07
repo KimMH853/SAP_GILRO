@@ -1,0 +1,55 @@
+<mvc:View
+    controllerName="project1.component.request.controller.ValueHelp"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:layout="sap.ui.layout"
+>
+    <f:DynamicPage
+        id="page"
+        headerExpanded="false"
+        showFooter="true"
+        toggleHeaderOnTitleClick="true"
+    >
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                    <HBox>
+                        <Title text="물품 요청 생성" />
+                    </HBox>
+                </f:heading>
+                <f:snappedContent>
+                    <form:SimpleForm layout="ResponsiveGridLayout">
+                        <form:content>
+                            
+                            <VBox>
+                                <Label text="요청 물품" />
+                                <Input id="ReqGood" />
+                                <layoutData>
+                                    <layout:GridData span="XL6 L6 M3 S12" />
+                                </layoutData>
+                            </VBox>
+                           
+                        </form:content>
+                    </form:SimpleForm>
+                </f:snappedContent>
+            </f:DynamicPageTitle>
+        </f:title>
+        <f:footer>
+            <OverflowToolbar>
+                <ToolbarSpacer />
+                <Button
+                    type="Emphasized"
+                    text="생성"
+                    press="onCreate"
+                />
+                <Button
+                    type="Default"
+                    text="취소"
+                    press="onBack"
+                />
+            </OverflowToolbar>
+        </f:footer>
+    </f:DynamicPage>
+</mvc:View>

@@ -1,11 +1,13 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/ui/model/json/JSONModel",
-    "../model/formatter"
+    "../model/formatter",
+    
 ], function (Controller, JSONModel, formatter) {
     "use strict";
     return Controller.extend("project1.component.request.controller.OrderDetail", {
         formatter: formatter,
+        
         onInit: function () {
             const myRoute = this.getOwnerComponent().getRouter().getRoute("OrderDetail");
             myRoute.attachPatternMatched(this.onMyRoutePatternMatched, this);
@@ -59,7 +61,7 @@ sap.ui.define([
             if (!this.nameDialog) {
                 this.nameDialog = sap.ui.core.Fragment.load({
                     id: oView.getId(),
-                    name: "project1.view.fragment.OrderRejectDialog",
+                    name: "project1.component.request.view.fragment.OrderRejectDialog",
                     controller: this
                 }).then(function (oDialog) {
                     oView.addDependent(oDialog);
@@ -75,7 +77,7 @@ sap.ui.define([
             temp.request_number = parseInt(this.byId("ReqNum").getText());
             temp.request_state = "C";
             temp.request_reject_reason = this.getView().byId("RejectReason").getValue();
-            let url = "/odata/v4/request/Request" + temp.request_number;
+            let url =`/odata/v4/request/Request(request_number=${temp.request_number})`;
             await this.onUpdate(url, temp);
         },
         onCancelRejectReason: function () {

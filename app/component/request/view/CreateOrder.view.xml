@@ -24,7 +24,14 @@
                         <form:content>
                             <VBox>
                                 <Label text="요청 번호" />
-                                <Input id="ReqNum" />
+                                <Text id="ReqNum" />
+                                <layoutData>
+                                    <layout:GridData span="XL6 L6 M3 S12" />
+                                </layoutData>
+                            </VBox>
+                            <VBox>
+                                <Label text="요청 일자" />
+                                <Text id="ReqDate" />
                                 <layoutData>
                                     <layout:GridData span="XL6 L6 M3 S12" />
                                 </layoutData>
@@ -38,7 +45,7 @@
                             </VBox>
                             <VBox>
                                 <Label text="물품 개수" />
-                                <Input id="ReqQty" />
+                                <Input id="ReqQty" liveChange="onInputChange"/>
                                 <layoutData>
                                     <layout:GridData span="XL6 L6 M3 S12" />
                                 </layoutData>
@@ -51,16 +58,10 @@
                                     <layout:GridData span="XL6 L6 M3 S12" />
                                 </layoutData>
                             </VBox>
-                            <VBox>
-                                <Label text="요청 일자" />
-                                <Input id="ReqDate" placeholder="yyyy-MM-DD"/>
-                                <layoutData>
-                                    <layout:GridData span="XL6 L6 M3 S12" />
-                                </layoutData>
-                            </VBox>
+                            
                             <VBox>
                                 <Label text="예상 가격" />
-                                <Input id="ReqPrice" />
+                                <Input id="ReqPrice" liveChange="onInputChange" />
                                 <layoutData>
                                     <layout:GridData span="XL6 L6 M3 S12" />
                                 </layoutData>

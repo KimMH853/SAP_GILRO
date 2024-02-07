@@ -39,8 +39,29 @@ sap.ui.define([
             this.getView().byId("TableName").setText(TableIndex);
         },
 
+        // onSearch: function () {
+        //     let ReqNum = this.byId("ReqNum").getValue().toString();
+        //     let ReqGood = this.byId("ReqGood").getValue();
+        //     let Requester = this.byId("Requester").getValue();
+        //     let ReqDate = this.byId("ReqDate").getValue();
+        //     let ReqStatus = this.byId("ReqStatus").getSelectedKey();
+        //     if (ReqDate) {
+        //         let ReqYear = ReqDate.split(". ")[0];
+        //         let ReqMonth = ReqDate.split(". ")[1].padStart(2, '0');
+        //         ReqDate = ReqYear + "-" + ReqMonth;
+        //     }
+        //     var aFilter = [];
+        //     if (ReqNum) { aFilter.push(new Filter("request_number", FilterOperator.Contains, ReqNum)); console.log(ReqNum); console.log(typeof(ReqNum))}
+        //     if (ReqGood) { aFilter.push(new Filter("request_product", FilterOperator.Contains, ReqGood)) }
+        //     if (Requester) { aFilter.push(new Filter("requestor", FilterOperator.Contains, Requester)) }
+        //     if (ReqDate) { aFilter.push(new Filter("request_date", FilterOperator.Contains, ReqDate)) }
+        //     if (ReqStatus) { aFilter.push(new Filter("request_state", FilterOperator.Contains, ReqStatus)) }
+        //     let oTable = this.byId("RequestTable").getBinding("rows");
+        //     oTable.filter(aFilter);
+        // },
+
         onSearch: function () {
-            let ReqNum = this.byId("ReqNum").getValue();
+            let ReqNum = this.byId("ReqNum").getValue(); 
             let ReqGood = this.byId("ReqGood").getValue();
             let Requester = this.byId("Requester").getValue();
             let ReqDate = this.byId("ReqDate").getValue();
@@ -51,7 +72,7 @@ sap.ui.define([
                 ReqDate = ReqYear + "-" + ReqMonth;
             }
             var aFilter = [];
-            if (ReqNum) { aFilter.push(new Filter("request_number", FilterOperator.Contains, ReqNum)) }
+            if (ReqNum) { aFilter.push(new Filter("request_number", FilterOperator.EQ, ReqNum)) }
             if (ReqGood) { aFilter.push(new Filter("request_product", FilterOperator.Contains, ReqGood)) }
             if (Requester) { aFilter.push(new Filter("requestor", FilterOperator.Contains, Requester)) }
             if (ReqDate) { aFilter.push(new Filter("request_date", FilterOperator.Contains, ReqDate)) }
