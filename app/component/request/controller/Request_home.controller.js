@@ -27,7 +27,13 @@ sap.ui.define([
         
         onRequest_chart: function (oEvent) {
             this.getOwnerComponent().getRouter().navTo("Request_chart");
-            }
+        },
+
+        onProduct: function (oEvent) {
+            this.getOwnerComponent().getRouter().navTo("Product");
+        },
+
+
 
     });
 });

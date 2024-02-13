@@ -5,6 +5,7 @@
     xmlns:f="sap.f"
 >
     <App class="myAppDemoWT">
+    
         <f:FlexibleColumnLayout
             autoFocus="false"
             restoreFocusOnBackNavigation="true"

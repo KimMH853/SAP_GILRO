@@ -154,6 +154,14 @@
             "ValueHelp"
           ],
           "layout": "OneColumn"
+        },
+        {
+          "name": "Product",
+          "pattern": "Product",
+          "target": [
+            "Product"
+          ],
+          "layout": "OneColumn"
         }
       ],
       "targets": {
@@ -210,6 +218,14 @@
           "transition": "slide",
           "viewId": "ValueHelp",
           "viewName": "ValueHelp",
+          "controlAggregation": "beginColumnPages"
+        },
+        "Product": {
+          "viewType": "XML",
+          "transition": "slide",
+          "viewId": "Product",
+          "viewName": "Product",
+          "viewLevel": 2,
           "controlAggregation": "beginColumnPages"
         }
         

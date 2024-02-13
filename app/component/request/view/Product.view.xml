@@ -1,0 +1,57 @@
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.uxap"
+    xmlns:m="sap.m"
+    controllerName="project1.component.request.controller.Product"
+>
+    <ObjectPageLayout id="ObjectPageLayout">
+        <headerTitle>
+            <ObjectPageHeader objectTitle="물품">
+                <actions>
+                    <ObjectPageHeaderActionButton
+                        icon="sap-icon://edit"
+                        text="Edit"
+                    />
+                    <ObjectPageHeaderActionButton
+                        icon="sap-icon://save"
+                        text="Save"
+                    />
+                </actions>
+            </ObjectPageHeader>
+        </headerTitle>
+
+        <headerContent>
+            <m:Label text="Personal description" />
+            <m:Text text="some KPI info" />
+        </headerContent>
+
+        <sections>
+            <!-- About 섹션 -->
+            <ObjectPageSection title="About" id="aboutSection">
+                <subSections>
+                    <ObjectPageSubSection>
+                        <blocks>
+                            <m:Text text="About this product:" />
+                            <m:Text text="This product is designed to improve productivity and efficiency." />
+                        </blocks>
+                    </ObjectPageSubSection>
+                </subSections>
+            </ObjectPageSection>
+
+            <!-- Product 섹션 -->
+            <ObjectPageSection title="Product" id="productSection">
+                <subSections>
+                    <ObjectPageSubSection>
+                        <blocks>
+                            <m:Text text="Product Information:" />
+                            <m:Text text="Product Name: XYZ" />
+                            <m:Text text="Product Type: ABC" />
+                        </blocks>
+                    </ObjectPageSubSection>
+                </subSections>
+            </ObjectPageSection>
+
+           
+        </sections>
+    </ObjectPageLayout>
+</mvc:View>
