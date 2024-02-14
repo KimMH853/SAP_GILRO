@@ -12,7 +12,7 @@ sap.ui.define([
 
 ], function (Controller, formatter, Filter, FilterOperator, Fragment, Sorter, JSONModel, Spreadsheet, exportLibrary) {
     "use strict";
-
+    
     let totalNumber;
     const EdmType = exportLibrary.EdmType;
     return Controller.extend("project1.component.request.controller.Request", {
@@ -20,11 +20,14 @@ sap.ui.define([
 
         onInit: async function () {
             const myRoute = this.getOwnerComponent().getRouter().getRoute("Request");
+            
             myRoute.attachPatternMatched(this.onMyRoutePatternMatched, this);
+            
         },
         onMyRoutePatternMatched: async function () {
             this.onClearField();
             this.onDataView();
+            
         },
         onDataView: async function () {
             const Request = await $.ajax({

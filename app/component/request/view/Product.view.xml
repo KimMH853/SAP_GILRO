@@ -2,6 +2,10 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.uxap"
     xmlns:m="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    xmlns:plugins="sap.m.plugins"
+    xmlns:l="sap.ui.layout"
     controllerName="project1.component.request.controller.Product"
 >
     <ObjectPageLayout id="ObjectPageLayout">
@@ -20,38 +24,186 @@
             </ObjectPageHeader>
         </headerTitle>
 
-        <headerContent>
-            <m:Label text="Personal description" />
-            <m:Text text="some KPI info" />
-        </headerContent>
+        <headerContent />
 
         <sections>
-            <!-- About 섹션 -->
-            <ObjectPageSection title="About" id="aboutSection">
+            <ObjectPageSection
+                title="About"
+                id="aboutSection"
+            >
                 <subSections>
                     <ObjectPageSubSection>
                         <blocks>
                             <m:Text text="About this product:" />
-                            <m:Text text="This product is designed to improve productivity and efficiency." />
+                            <m:Text
+                                text="This product is designed to improve productivity and efficiency."
+                            />
                         </blocks>
                     </ObjectPageSubSection>
                 </subSections>
             </ObjectPageSection>
 
-            <!-- Product 섹션 -->
-            <ObjectPageSection title="Product" id="productSection">
+            <ObjectPageSection
+                title="물품목록"
+                id="productSection"
+            >
                 <subSections>
                     <ObjectPageSubSection>
                         <blocks>
-                            <m:Text text="Product Information:" />
-                            <m:Text text="Product Name: XYZ" />
-                            <m:Text text="Product Type: ABC" />
+                        <l:VerticalLayout>
+                        <m:OverflowToolbar>
+                                <m:Button
+                                    text="삭제"
+                                    press="onDeleteProduct"
+                                    type="Emphasized"
+                                />
+                                 <m:Button
+                                    text="수정"
+                                    press="onUpdateProduct"
+                                    type="Emphasized"
+                                />
+                            </m:OverflowToolbar>
+
+                            <m:Table
+                                id="idProductsTable"
+                                fixedLayout="Strict"
+                                autoPopinMode="true"
+                                contextualWidth="Auto"
+                                growing="true"
+                                items="{
+                                    path: 'oProductModel>/',
+                                    sorter: {
+                                        path: 'product_number'
+                                    }
+                                }"
+                            >
+                                <m:dependents>
+                                    <plugins:ColumnResizer />
+                                </m:dependents>
+                                <m:columns>
+                                    <m:Column
+                                        width="4em"
+                                        hAlign="Center"
+                                    >
+                                        <m:Text text="" />
+                                    </m:Column>
+                                    <m:Column
+                                        width="12em"
+                                        hAlign="Center"
+                                    >
+                                        <m:Text text="물품아이디" />
+                                    </m:Column>
+                                    <m:Column
+                                        width="12em"
+                                        hAlign="Center"
+                                    >
+                                        <m:Text text="물품명" />
+                                    </m:Column>
+                                    <m:Column
+                                        width="150px"
+                                        hAlign="End"
+                                    >
+                                        <m:Text text="수량" />
+                                    </m:Column>
+                                    <m:Column
+                                        width="25%"
+                                        hAlign="Center"
+                                    >
+                                        <m:Text text="카테고리" />
+                                    </m:Column>
+                                    <m:Column
+                                        width="10rem"
+                                        hAlign="End"
+                                    >
+                                        <m:Text text="가격" />
+                                    </m:Column>
+                                    <m:Column
+                                        width="100px"
+                                        hAlign="Center"
+                                    >
+                                        <m:Text text="등록일" />
+                                    </m:Column>
+                                </m:columns>
+                                <m:items>
+                                    <m:ColumnListItem vAlign="Middle">
+                                        <m:cells>
+                                            <m:CheckBox
+                                                selected="{oProductModel>CHK}"
+                                                textAlign="Center"
+                                            />
+                                            <m:ObjectIdentifier
+                                                text="{oProductModel>product_number}"
+                                            />
+                                            <m:Text
+                                                text="{oProductModel>product_name}"
+                                                class="sapUiTinyMarginTopBottom"
+                                            />
+                                            <m:Text text="{oProductModel>product_quantity}" />
+                                            <m:Text
+                                                text="{path: 'oProductModel>product_category', formatter: '.formatter.categoryText'}"
+                                            />
+                                            <m:Text text="{oProductModel>product_price}원" />
+                                            <m:Text text="{oProductModel>product_date}" />
+                                        </m:cells>
+                                    </m:ColumnListItem>
+                                </m:items>
+                            </m:Table>
+                        </l:VerticalLayout>
+                            
                         </blocks>
                     </ObjectPageSubSection>
                 </subSections>
             </ObjectPageSection>
 
-           
+            <ObjectPageSection
+                title="물품추가"
+                id="createSection"
+            >
+                <subSections>
+                    <ObjectPageSubSection>
+                        <f:SimpleForm
+                            editable="true"
+                            layout="ColumnLayout"
+                            columnsM="2"
+                            columnsL="3"
+                            columnsXL="4"
+                        >
+                            <f:content>
+                                <m:Label text="물품아이디" />
+                                <m:Text id="productNum" />
+                                <m:Label text="물품명" />
+                                <m:Input id="productNameInput" />
+                                <m:Label text="수량" />
+                                <m:Input id="quantityInput" />
+                                <m:Label text="카테고리" />
+                                <m:Select id="categoryInput">
+                                    <m:items>
+                                        <core:Item
+                                            text="컴퓨터 주변기기"
+                                            key="A"
+                                        />
+                                        <core:Item
+                                            text="다과"
+                                            key="B"
+                                        />
+                                        <core:Item
+                                            text="문구"
+                                            key="C"
+                                        />
+                                    </m:items>
+                                </m:Select>
+
+                                <m:Label text="가격" />
+                                <m:Input id="priceInput" />
+                            </f:content>
+                        </f:SimpleForm>
+                        <m:Button
+                            text="등록"
+                            press=".onRegisterProduct"
+                        />
+                    </ObjectPageSubSection>
+                </subSections>
+            </ObjectPageSection>
         </sections>
     </ObjectPageLayout>
 </mvc:View>

@@ -1,0 +1,19 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+    <Dialog
+        id="updateProductDialog"
+        title="물품 수정"
+        contentWidth="300px"
+        beginButton="{parts: [{path: 'i18n>Save'}], formatter: '.formatter.getText'}"
+        endButton="{parts: [{path: 'i18n>Cancel'}], formatter: '.formatter.getText'}"
+        afterClose="onCloseDialog"
+    >
+        <Label text="물품 이름" />
+        <Input value="{path: 'product>/name'}" width="80%"/>
+
+        <Label text="물품 가격" />
+        <Input value="{path: 'product>/price'}" width="80%"/>
+
+        <Label text="물품 수" />
+        <TextArea value="{path: 'product>/description'}" width="80%"/>
+    </Dialog>
+</core:FragmentDefinition>

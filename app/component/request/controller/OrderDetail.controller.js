@@ -20,7 +20,7 @@ sap.ui.define([
             });
             let RequestModel = new JSONModel(Request.value);
             this.getView().setModel(RequestModel, "RequestModel");
-            console.log(RequestModel.oData[0]);
+            //console.log(RequestModel.oData[0]);
             let visibleMode = new JSONModel({ footer: false, reject: false });
             if (RequestModel.oData[0].request_state == 'B') {
                 visibleMode.oData.footer = true;

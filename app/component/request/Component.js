@@ -7,15 +7,7 @@ sap.ui.define([
 ], function (UIComponent, JSONModel, ResourceModel, Device, models) {
     "use strict";
     return UIComponent.extend("project1.Component", {
-        metadata: {
-            "interfaces": ["sap.ui.core.IAsyncContentCreation"],
-            "rootView": {
-                "viewName": "project1.view.App",
-                "type": "XML",
-                "id": "app",
-                manifest: "json"
-            }
-        },
+       
         init: function () {
             UIComponent.prototype.init.apply(this, arguments);
             this.getRouter().initialize();

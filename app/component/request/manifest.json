@@ -225,7 +225,7 @@
           "transition": "slide",
           "viewId": "Product",
           "viewName": "Product",
-          "viewLevel": 2,
+          
           "controlAggregation": "beginColumnPages"
         }
         

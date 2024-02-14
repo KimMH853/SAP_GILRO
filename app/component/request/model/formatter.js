@@ -21,6 +21,19 @@ sap.ui.define([], function () {
             console.log(typeof(sValue));
             
             return sValue.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); 
-        }
+        },
+
+        categoryText: function (sStatus) {
+            switch (sStatus) {
+                case "A":
+                    return "컴퓨터 주변기기"
+                case "B":
+                    return "다과";
+                case "C":
+                    return "문구";
+                default:
+                    return sStatus;
+            }
+        },
     };
 });
