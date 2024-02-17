@@ -7,7 +7,10 @@ sap.ui.define([
     "sap/ui/model/FilterOperator"
 ], function (Controller, JSONModel, MessageBox, Fragment, Filter, FilterOperator) {
     "use strict";
-    let Today, CreateNum, product_number;
+    let Today, CreateNum;
+
+    let product_number = 0;
+
     return Controller.extend("project1.component.request.controller.CreateOrder", {
         onInit: function () {
             const myRoute = this.getOwnerComponent().getRouter().getRoute("CreateOrder");
@@ -43,10 +46,50 @@ sap.ui.define([
             this.getView().byId('ReqNum').setText(CreateNum);
             this.getView().byId('ReqDate').setText(Today);
         },
+
         onCreate: async function () {
-            console.log("onCreate")
-            console.log(typeof(product_number));
+            
             let temp = new JSONModel(this.temp).oData;
+
+            const product = product_number;
+            const quantity = this.byId("ReqQty").getValue().trim();
+            const requestor = this.byId("Requester").getValue().trim();
+            
+            const oProductInput = this.byId("ReqGood");
+            const oQuantityInput = this.byId("ReqQty");
+            const oRequestorInput = this.byId("Requester");
+
+
+            if (!product) {
+                oProductInput.setValueState(sap.ui.core.ValueState.Error);
+            } else {
+                oProductInput.setValueState(sap.ui.core.ValueState.None);
+            }
+
+            if (quantity === "") {
+                oQuantityInput.setValueState(sap.ui.core.ValueState.Error);
+            } else {
+                oQuantityInput.setValueState(sap.ui.core.ValueState.None);
+            }
+
+            if (requestor === "") {
+                oRequestorInput.setValueState(sap.ui.core.ValueState.Error);
+            } else {
+                oRequestorInput.setValueState(sap.ui.core.ValueState.None);
+            }
+
+            if(!product) { 
+                MessageBox.warning("요청 물품을 입력해 주세요");
+                return;
+            }
+            if(quantity === "") { 
+                MessageBox.warning("물품 개수를 입력해 주세요");
+                return;
+            }
+            if(requestor === "") { 
+                MessageBox.warning("요청자를 입력해 주세요");
+                return;
+            }
 
             temp.product_number = parseInt(product_number);
             //temp.request_quantity = parseInt(this.byId("ReqQty").getValue());
@@ -127,9 +170,31 @@ sap.ui.define([
 			}
 
 			this.byId("ReqGood").setValue(oSelectedItem.getTitle());
-            console.log(oSelectedItem.getDescription()); 
+            
             product_number = oSelectedItem.getDescription();
-		}
+            console.log(product_number); 
+		},
+
+        onInputChange: function(oEvent) {
+            var oInputField = oEvent.getSource();
+            var sValue = oInputField.getValue().trim();
+
+            // 입력된 값이 없는 경우 valueState를 Error로 설정
+            if (sValue === "") {
+                oInputField.setValueState(sap.ui.core.ValueState.Error);
+            } else {
+                // 입력된 값이 있는 경우 valueState를 None으로 설정
+                oInputField.setValueState(sap.ui.core.ValueState.None);
+            }
+            
+            
+            if (product_number===0) {
+                oInputField.setValueState(sap.ui.core.ValueState.Error);
+            } else {
+                // 입력된 값이 있는 경우 valueState를 None으로 설정
+                oInputField.setValueState(sap.ui.core.ValueState.None);
+            }
+        },
  
         
     });

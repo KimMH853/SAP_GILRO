@@ -51,9 +51,12 @@
                                     enabled="true"
                                     editable="true"
                                     valueHelpOnly="true"
+                                    valueState="None"
+                                    change="onInputChange"
                                 >
                                     <suggestionItems>
                                         <core:Item
+                                            key="{oProductModel>product_number}"
                                             text="{oProductModel>product_name}"
                                         />
                                     </suggestionItems>
@@ -70,6 +73,8 @@
                                 <Input
                                     id="ReqQty"
                                     liveChange="onInputChange"
+                                    valueState="None"
+                                    change="onInputChange"
                                 />
                                 <layoutData>
                                     <layout:GridData span="XL6 L6 M3 S12" />
@@ -77,8 +82,15 @@
                             </VBox>
 
                             <VBox>
-                                <Label text="요청자" />
-                                <Input id="Requester" />
+                                <Label
+                                    text="요청자"
+                                    required="true"
+                                />
+                                <Input
+                                    id="Requester"
+                                    valueState="None"
+                                    change="onInputChange"
+                                />
                                 <layoutData>
                                     <layout:GridData span="XL6 L6 M3 S12" />
                                 </layoutData>
