@@ -11,7 +11,23 @@ sap.ui.define([
         
         onRequest: function () {
             this.getOwnerComponent().getRouter().navTo("request");
+        },
+        
+        onReqeustPage: function() {
+           console.log("onReqeustPage")
+            this.getOwnerComponent().getRouter().navTo("request");
+        },
+        
+        onRequestChartpage: function() {
+           
+            this.getOwnerComponent().getRouter().navTo("RequestChartPage");
+        },
+        
+        onProductPage: function() {
+            
+            this.getOwnerComponent().getRouter().navTo("ProductPage");
         }
+
 
     });
 });

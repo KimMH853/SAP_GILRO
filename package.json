@@ -8,8 +8,10 @@
   "dependencies": {
     "@sap/cds": "^7",
     "@sap/cds-hana": "^2",
+    "@sap/hana-client": "^2.19.21",
     "@sap/xssec": "^3",
     "express": "^4",
+    "hdb": "^0.19.7",
     "sqlite3": "^5.1.7"
   },
   "scripts": {

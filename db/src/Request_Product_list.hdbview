@@ -1,0 +1,43 @@
+-- VIEW DEMO_REQUEST_REQUEST_PRODUCT_LIST AS
+-- SELECT
+--     A.REQUEST_NUMBER AS REQUEST_NUMBER,
+--     A.PRODUCT_NUMBER AS PRODUCT_NUMBER,
+--     A.REQUEST_QUANTITY AS REQUEST_QUANTITY,
+--     A.REQUESTOR AS REQUESTOR,
+--     A.REQUEST_DATE AS REQUEST_DATE,
+--     CASE
+--         WHEN A.REQUEST_STATE = 'A' THEN '승인'
+--         WHEN A.REQUEST_STATE = 'B' THEN '처리 대기'
+--         WHEN A.REQUEST_STATE = 'C' THEN '반려'
+--     END AS REQUEST_STATE,
+--     A.REQUEST_REASON AS REQUEST_REASON,
+--     A.REQUEST_REJECT_REASON AS REQUEST_REJECT_REASON,
+--     B.PRODUCT_NAME AS PRODUCT_NAME,
+--     B.PRODUCT_PRICE AS PRODUCT_PRICE
+-- FROM
+--     DEMO_REQUEST_REQUEST AS A
+-- LEFT OUTER JOIN
+--     DEMO_REQUEST_PRODUCT AS B
+-- ON
+--     A.PRODUCT_NUMBER = B.PRODUCT_NUMBER
+
+VIEW Demo_Request_Request_product_list AS
+
+SELECT a.request_number AS request_number,
+  a.product_number AS product_number,
+  a.request_quantity AS request_quantity,
+  a.requestor AS requestor,
+  a.request_date AS request_date,
+  CASE
+    WHEN a.request_state = 'A' THEN '승인'
+    WHEN a.request_state = 'B' THEN '처리 대기'
+    WHEN a.request_state = 'C' THEN '반려'
+  END AS request_state,
+  a.request_reason AS request_reason,
+  a.request_reject_reason AS request_reject_reason,
+  b.product_name AS product_name,
+  b.product_price AS product_price
+
+  FROM DEMO_REQUEST_REQUEST AS a
+  LEFT OUTER JOIN DEMO_REQUEST_PRODUCT AS b
+ ON a.product_number = b.product_number;

@@ -73,7 +73,26 @@ sap.ui.define([
           } else {
               alert("Please select a city.");
           }
-      }
+      },
+      onListItemPress: function (oEvent) {
+        console.log(oEvent);
+        console.log("hi")
+        
+    },
+    onAfterRendering: function() {
+        // SmartField 컨트롤 가져오기
+        var oSmartField = this.getView().byId("idDeliveryTransport");
+
+        // SmartField의 값을 변경할 수 있습니다.
+        // 예를 들어, 값을 설정하거나 속성을 변경할 수 있습니다.
+        // 여기에 필요한 작업을 수행하세요.
+
+        // 예: SmartField의 값을 설정
+        oSmartField.setValue("YourNewValue");
+
+        // 예: SmartField의 텍스트 입력 모드 소스 변경
+        oSmartField.setTextInEditModeSource("YourNewTextInEditModeSource");
+    },
       
   });
 });

@@ -62,6 +62,24 @@
       "problemMatcher": [
         "$cap-hdi-bind-handler"
       ]
+    },
+    {
+      "label": "cds-deploy-to-hana-SAP_GILRO-DEMO-dev2",
+      "type": "shell",
+      "command": "cds",
+      "args": [
+        "deploy",
+        "--to",
+        "hana:DEMO-dev2",
+        "--no-save"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "isBackground": true,
+      "problemMatcher": [
+        "$cap-hdi-bind-handler"
+      ]
     }
   ]
 }

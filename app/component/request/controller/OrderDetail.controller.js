@@ -79,7 +79,11 @@ sap.ui.define([
             temp.request_reject_reason = this.getView().byId("RejectReason").getValue();
             let url =`/odata/v4/request/Request(request_number=${temp.request_number})`;
             await this.onUpdate(url, temp);
+
+            this.byId("OrderRejectDialog").destroy();
+            this.nameDialog = null;
         },
+
         onCancelRejectReason: function () {
             this.byId("OrderRejectDialog").destroy();
             this.nameDialog = null;

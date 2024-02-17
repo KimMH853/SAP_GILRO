@@ -1,0 +1,13 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog
+		id="selectDialog"
+		title="물품"
+		items="{path: 'oProductModel>/'}"
+		search=".onValueHelpSearch"
+		confirm=".onValueHelpClose"
+		cancel=".onValueHelpClose">
+		<StandardListItem
+			title="{oProductModel>product_name}"
+			description="{oProductModel>product_number}" />
+	</SelectDialog>
+</core:FragmentDefinition>

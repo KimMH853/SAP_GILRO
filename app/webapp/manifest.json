@@ -121,6 +121,12 @@
             "name": "request",
             "prefix": "re"
           }
+        },
+        {
+          "name": "Request",
+          "pattern": "Request",
+          "target": "Request",
+          "layout": "OneColumn"
         }
       ],
       "targets": {
@@ -135,6 +141,12 @@
           "type": "Component",
           "usage": "requestComponent",
           "title": "Request"
+        },
+        "Request": {
+          "type": "Component",
+          "viewName": "Request",
+          "transition": "slide",
+          "controlAggregation": "beginColumnPages"
         }
       }
     },

@@ -5,6 +5,7 @@
     xmlns:f="sap.f"
     xmlns:form="sap.ui.layout.form"
     xmlns:layout="sap.ui.layout"
+    xmlns:core="sap.ui.core"
 >
     <f:DynamicPage
         id="page"
@@ -37,20 +38,44 @@
                                 </layoutData>
                             </VBox>
                             <VBox>
-                                <Label text="요청 물품" />
-                                <Input id="ReqGood" />
+                                <Label
+                                    text="요청 물품"
+                                    required="true"
+                                />
+                                <Input
+                                    id="ReqGood"
+                                    showSuggestion="true"
+                                    showValueHelp="true"
+                                    valueHelpRequest=".onValueHelpRequest"
+                                    suggestionItems="{path: 'oProductModel>/'}"
+                                    enabled="true"
+                                    editable="true"
+                                    valueHelpOnly="true"
+                                >
+                                    <suggestionItems>
+                                        <core:Item
+                                            text="{oProductModel>product_name}"
+                                        />
+                                    </suggestionItems>
+                                </Input>
                                 <layoutData>
                                     <layout:GridData span="XL6 L6 M3 S12" />
                                 </layoutData>
                             </VBox>
                             <VBox>
-                                <Label text="물품 개수" />
-                                <Input id="ReqQty" liveChange="onInputChange"/>
+                                <Label
+                                    text="물품 개수"
+                                    required="true"
+                                />
+                                <Input
+                                    id="ReqQty"
+                                    liveChange="onInputChange"
+                                />
                                 <layoutData>
                                     <layout:GridData span="XL6 L6 M3 S12" />
                                 </layoutData>
                             </VBox>
-                            
+
                             <VBox>
                                 <Label text="요청자" />
                                 <Input id="Requester" />
@@ -58,19 +83,12 @@
                                     <layout:GridData span="XL6 L6 M3 S12" />
                                 </layoutData>
                             </VBox>
-                            
-                            <VBox>
-                                <Label text="예상 가격" />
-                                <Input id="ReqPrice" liveChange="onInputChange" />
-                                <layoutData>
-                                    <layout:GridData span="XL6 L6 M3 S12" />
-                                </layoutData>
-                            </VBox>
+
                             <VBox>
                                 <Label text="요청 사유" />
-                                <Input id="ReqReason"/>
+                                <Input id="ReqReason" />
                                 <layoutData>
-                                    <layout:GridData span="XL12 L12 M3 S12" />
+                                    <layout:GridData span="XL6 L6 M3 S12" />
                                 </layoutData>
                             </VBox>
                         </form:content>

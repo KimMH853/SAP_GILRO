@@ -1,17 +1,45 @@
 <mvc:View
     controllerName="project1.component.request.controller.ValueHelp"
     xmlns="sap.m"
-    xmlns:mvc="sap.ui.core.mvc">
-
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:comp="sap.ui.comp.smartfield"
+>
     <Page title="물품 요청 생성">
         <content>
             <Input
                 id="cityInput"
                 placeholder="물품 선택"
                 showValueHelp="true"
-                valueHelpRequest="onValueHelpRequest" />
-            <Button text="Submit" press="onSubmit" />
+                valueHelpRequest="onValueHelpRequest"
+            />
+            <Button
+                text="Submit"
+                press="onSubmit"
+            />
+        </content>
+        <content>
+            <List
+                id="myList"
+                itemPress="onListItemPress"
+            >
+                <items>
+                    <StandardListItem
+                        title="리스트"
+                        description="test"
+                    />
+                </items>
+            </List>
+        </content>
+        <content>
+            <comp:SmartField
+                id="idDeliveryTransport"
+                value="{DeliveryTransport}"
+                textInEditModeSource="ValueListNoValidation"
+            >
+                <comp:configuration>
+                    <comp:Configuration displayBehaviour="idAndDescription" />
+                </comp:configuration>
+            </comp:SmartField>
         </content>
     </Page>
-
 </mvc:View>

@@ -32,8 +32,9 @@ sap.ui.define([
         onDataView: async function () {
             const Request = await $.ajax({
                 type: "get",
-                url: "/odata/v4/request/Request"
+                url: "/odata/v4/request/Request_product_list"
             });
+            console.log(Request.value);
             let RequestModel = new JSONModel(Request.value);
             this.getView().setModel(RequestModel, "RequestModel");
             totalNumber = this.getView().getModel("RequestModel").oData.length;
@@ -42,6 +43,11 @@ sap.ui.define([
             this.getView().byId("TableName").setText(TableIndex);
         },
 
+        onLiveChange: function (oEvent) {
+            if (oEvent.getParameter("liveValue") && oEvent.getParameter("liveValue").includes("\n")) {
+                this.onSearch();
+            }
+        },
         // onSearch: function () {
         //     let ReqNum = this.byId("ReqNum").getValue().toString();
         //     let ReqGood = this.byId("ReqGood").getValue();

@@ -8,15 +8,14 @@ using {
 } from '@sap/cds/common';
 
 entity Request {
-    key request_number          : Integer @title: '요청번호';
-        request_product         : String  @title: '요청물품';
-        request_quantity        : Integer @title: '요청수량';
-        requestor               : String  @title: '요청자';
-        request_date            : String  @title: '요청날짜';
-        request_state           : String  @title: '요청상태';
-        request_reason          : String  @title: '요청사유';
-        request_estimated_price : Integer @title: '요청예상가격';
-        request_reject_reason   : String  @title: '요청거절사유';
+    key request_number        : Integer @title: '요청번호';
+        product_number        : Integer @title: '요청물품번호';
+        request_quantity      : Integer @title: '요청수량';
+        requestor             : String  @title: '요청자';
+        request_date          : String  @title: '요청날짜';
+        request_state         : String  @title: '요청상태';
+        request_reason        : String  @title: '요청사유';
+        request_reject_reason : String  @title: '요청거절사유';
 };
 
 entity Request_State {
@@ -31,4 +30,18 @@ entity Product {
         product_date     : String  @title: '등록날짜';
         product_category : String  @title: '물품카테고리';
         product_price    : Integer @title: '가격';
+};
+
+@cds.persistence.exists
+entity Request_product_list {
+    key request_number        : Integer;
+        product_number        : Integer;
+        request_quantity      : Integer;
+        requestor             : String;
+        request_date          : String;
+        request_state         : String;
+        request_reason        : String;
+        request_reject_reason : String;
+        product_name          : String;
+        product_price         : Integer;
 };

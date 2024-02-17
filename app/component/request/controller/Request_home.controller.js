@@ -24,7 +24,7 @@ sap.ui.define([
         onRequest_list: function () {
             this.getOwnerComponent().getRouter().navTo("Request");
         },
-        
+
         onRequest_chart: function (oEvent) {
             this.getOwnerComponent().getRouter().navTo("Request_chart");
         },
@@ -32,7 +32,15 @@ sap.ui.define([
         onProduct: function (oEvent) {
             this.getOwnerComponent().getRouter().navTo("Product");
         },
-
+        onListItemPress: function (oEvent) {
+            var oListItem = oEvent.getSource();
+            
+            var oClickedItemData = oListItem.getBindingContext("RequestModel").getObject();
+           
+            this.getOwnerComponent().getRouter().navTo("OrderDetail", {
+                num: oClickedItemData.request_number
+            });
+        }
 
 
     });

@@ -33,27 +33,33 @@
                     <form:content>
                         <VBox>
                             <Label text="요청 번호 : " />
-                            <Input id="ReqNum" />
+                            <Input
+                                id="ReqNum"
+                                liveChange="onLiveChange"
+                                submit="onSearch"
+                            />
                             <layoutData>
                                 <layout:GridData span="XL2 L2 M6 S12" />
                             </layoutData>
                         </VBox>
                         <VBox>
                             <Label text="요청 물품 : " />
-                            <Input id="ReqGood" />
+                            <Input id="ReqGood" liveChange="onLiveChange"
+                                submit="onSearch"/>
                             <layoutData>
                                 <layout:GridData span="XL2 L2 M6 S12" />
                             </layoutData>
                         </VBox>
                         <VBox>
                             <Label text="요청자 : " />
-                            <Input id="Requester" />
+                            <Input id="Requester" liveChange="onLiveChange"
+                                submit="onSearch"/>
                             <layoutData>
                                 <layout:GridData span="XL2 L2 M6 S12" />
                             </layoutData>
                         </VBox>
                         <VBox>
-                            <Label text="요청 일자" />
+                            <Label text="요청 일자"/>
                             <DatePicker
                                 id="ReqDate"
                                 displayFormat="yyyy-MM"
@@ -173,7 +179,7 @@
                     <t:Column hAlign="Center">
                         <Label text="요청 물품" />
                         <t:template>
-                            <Text text="{RequestModel>request_product}" />
+                            <Text text="{RequestModel>product_name}" />
                         </t:template>
                     </t:Column>
                     <t:Column hAlign="Center">
@@ -198,15 +204,12 @@
                         <Label text="처리 상태" />
                         <t:template>
                             <ObjectStatus
-                                text="{
-                                path: 'RequestModel>request_state',
-                                formatter: '.formatter.statusText'
-                                }"
-                                state="{= ${RequestModel>request_state} === 'A' ? 'Success' : 
-                                        ${RequestModel>request_state} === 'C' ? 'Error' : 
+                                text="{RequestModel>request_state}"
+                                state="{= ${RequestModel>request_state} === '승인' ? 'Success' : 
+                                        ${RequestModel>request_state} === '반려' ? 'Error' : 
                                         'None'
                                         }"
-                                active="{= ${RequestModel>request_state} === 'C' ? true : false}"
+                                active="{= ${RequestModel>request_state} === '반려' ? true : false}"
                                 press="onShowRejectReason"
                             />
                         </t:template>

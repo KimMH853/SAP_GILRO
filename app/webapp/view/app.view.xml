@@ -19,7 +19,26 @@
                     text="물품 요청"
                     buttonMode="Split"
                     defaultAction="onRequest"
-                />
+                >
+                    <menu>
+                        <Menu>
+                            <items>
+                                <MenuItem
+                                    text="물품 요청 목록"
+                                    press="onReqeustPage"
+                                />
+                                <MenuItem
+                                    text="물품 요청 현황"
+                                    press="onRequestChartpage"
+                                />
+                                <MenuItem
+                                    text="물품"
+                                    press="onProductPage"
+                                />
+                            </items>
+                        </Menu>
+                    </menu>
+                </MenuButton>
             </tnt:ToolHeader>
         </tnt:header>
         <tnt:mainContents>
