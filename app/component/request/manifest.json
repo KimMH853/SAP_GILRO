@@ -162,6 +162,14 @@
             "Product"
           ],
           "layout": "OneColumn"
+        },
+        {
+          "name": "ProductDetail",
+          "pattern": "ProductDetail/{product_number}",
+          "target": [
+            "ProductDetail"
+          ],
+          "layout": "OneColumn"
         }
       ],
       "targets": {
@@ -225,6 +233,14 @@
           "transition": "slide",
           "viewId": "Product",
           "viewName": "Product",
+          
+          "controlAggregation": "beginColumnPages"
+        },
+        "ProductDetail": {
+          "viewType": "XML",
+          "transition": "slide",
+          "viewId": "ProductDetail",
+          "viewName": "ProductDetail",
           
           "controlAggregation": "beginColumnPages"
         }

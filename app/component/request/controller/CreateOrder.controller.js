@@ -91,6 +91,8 @@ sap.ui.define([
                 return;
             }
 
+
+            
             temp.product_number = parseInt(product_number);
             //temp.request_quantity = parseInt(this.byId("ReqQty").getValue());
             temp.request_quantity = parseInt(this.getView().byId("ReqQty").getValue().replace(/,/g, ''));

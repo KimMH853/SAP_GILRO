@@ -1,0 +1,166 @@
+<!-- <mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.uxap"
+    xmlns:m="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    xmlns:plugins="sap.m.plugins"
+    xmlns:l="sap.ui.layout"
+    controllerName="project1.component.request.controller.ProductDetail"
+>
+    <ObjectPageLayout id="ObjectPageLayout">
+        <headerTitle>
+            <ObjectPageHeader objectTitle="물품">
+                <actions>
+                    <ObjectPageHeaderActionButton
+                        icon="sap-icon://edit"
+                        text="Edit"
+                    />
+                    <ObjectPageHeaderActionButton
+                        icon="sap-icon://save"
+                        text="Save"
+                    />
+                </actions>
+            </ObjectPageHeader>
+        </headerTitle>
+
+        <headerContent />
+
+        <sections>
+            <ObjectPageSection
+                title="물품 상세"
+                id="aboutSection"
+            >
+                <subSections>
+    <ObjectPageSubSection>
+        <blocks>
+            <l:VerticalLayout>
+                <m:Text text="물품 번호" />
+                <m:Text id="productNum" text="{oProductModel>/0/product_number}" class="sapUiResponsiveMargin" />
+                <m:Text text="물품명" />
+                <m:Text id="productNameInput" text="{oProductModel>/0/product_name}" class="sapUiResponsiveMargin" />
+                <m:Text text="물품 수량" />
+                <m:Text id="quantityInput" text="{oProductModel>/0/product_quantity}" class="sapUiResponsiveMargin" />
+                <m:Text text="물품 카테고리" />
+                <m:Text id="categoryInput" text="{path: 'oProductModel>/0/product_category', formatter: '.formatter.categoryText'}" class="sapUiResponsiveMargin" />
+                <m:Text text="물품 가격" />
+                <m:Text id="priceInput" text="{oProductModel>/0/product_price}" class="sapUiResponsiveMargin" />
+            </l:VerticalLayout>
+        </blocks>
+    </ObjectPageSubSection>
+</subSections>
+            </ObjectPageSection>
+
+        </sections>
+    </ObjectPageLayout>
+</mvc:View> -->
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.uxap"
+    xmlns:m="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    xmlns:plugins="sap.m.plugins"
+    xmlns:l="sap.ui.layout"
+    controllerName="project1.component.request.controller.ProductDetail"
+>
+    <ObjectPageLayout id="ObjectPageLayout">
+        <headerTitle>
+            <ObjectPageHeader objectTitle="물품">
+                <actions>
+                    <ObjectPageHeaderActionButton
+                        icon="sap-icon://edit"
+                        text="Edit"
+                        press="onEdit"
+                        visible="{= !${viewModel>/editMode}}"
+                    />
+                    <ObjectPageHeaderActionButton
+                        icon="sap-icon://save"
+                        text="Save"
+                        press="onSave"
+                        visible="{viewModel>/editMode}"
+                    />
+                    <ObjectPageHeaderActionButton
+                        icon="sap-icon://decline"
+                        text="Cancel"
+                        press="onCancel"
+                        visible="{viewModel>/editMode}"
+                    />
+                </actions>
+            </ObjectPageHeader>
+        </headerTitle>
+
+        <headerContent />
+
+        <sections>
+            <ObjectPageSection
+                title="물품 상세"
+                id="aboutSection"
+            >
+                <subSections>
+                    <ObjectPageSubSection>
+                        <blocks>
+                            <l:VerticalLayout>
+                                <m:Text text="물품 번호" />
+                                <m:Text
+                                    id="productNum"
+                                    text="{oProductModel>/0/product_number}"
+                                    class="sapUiResponsiveMargin"
+                                />
+                                <m:Text text="물품명" />
+
+                                <m:Text
+                                    text="{oProductModel>/0/product_name}"
+                                    visible="{= !${viewModel>/editMode}}"
+                                    class="sapUiResponsiveMargin"
+                                />
+                                <m:Input
+                                    id="productNameInput"
+                                    value="{oProductModel>/0/product_name}"
+                                    visible="{viewModel>/editMode}"
+                                    class="sapUiResponsiveMargin"
+                                />
+                                <m:Text text="물품 수량" />
+                                <m:Text
+                                    text="{oProductModel>/0/product_quantity}"
+                                    class="sapUiResponsiveMargin"
+                                    visible="{= !${viewModel>/editMode}}"
+                                />
+                                <m:Input
+                                    id="quantityInput"
+                                    value="{oProductModel>/0/product_quantity}"
+                                    visible="{viewModel>/editMode}"
+                                    class="sapUiResponsiveMargin"
+                                />
+                                <m:Text text="물품 카테고리" />
+                                <m:Text
+                                    text="{path: 'oProductModel>/0/product_category', formatter: '.formatter.categoryText'}"
+                                    class="sapUiResponsiveMargin"
+                                    visible="{= !${viewModel>/editMode}}"
+                                />
+                                <m:Input
+                                    id="categoryInput"
+                                    value="{oProductModel>/0/product_category}"
+                                    visible="{viewModel>/editMode}"
+                                    class="sapUiResponsiveMargin"
+                                />
+                                <m:Text text="물품 가격" />
+                                <m:Text
+                                    text="{oProductModel>/0/product_price}"
+                                    class="sapUiResponsiveMargin"
+                                    visible="{= !${viewModel>/editMode}}"
+                                />
+                                <m:Input
+                                    id="priceInput"
+                                    value="{oProductModel>/0/product_price}"
+                                    visible="{viewModel>/editMode}"
+                                    class="sapUiResponsiveMargin"
+                                />
+                            </l:VerticalLayout>
+                        </blocks>
+                    </ObjectPageSubSection>
+                </subSections>
+            </ObjectPageSection>
+        </sections>
+    </ObjectPageLayout>
+</mvc:View>

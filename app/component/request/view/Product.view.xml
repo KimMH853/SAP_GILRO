@@ -125,7 +125,7 @@
                                     </m:Column>
                                 </m:columns>
                                 <m:items>
-                                    <m:ColumnListItem vAlign="Middle">
+                                    <m:ColumnListItem vAlign="Middle" press="onColumnPress" type="Active">
                                         <m:cells>
                                             <m:CheckBox
                                                 selected="{oProductModel>CHK}"

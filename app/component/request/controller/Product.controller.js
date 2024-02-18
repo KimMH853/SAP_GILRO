@@ -56,7 +56,7 @@ sap.ui.define([
             const productOderIndex = productOder.length;
             totalNumber = productOderIndex;
             const CreateNum = productOder[productOderIndex - 1].product_number + 1
-            console.log(CreateNum);
+            //console.log(CreateNum);
             this.getView().byId('productNum').setText(CreateNum);
         },
 
@@ -142,6 +142,19 @@ sap.ui.define([
             this.onClearField();
             this.onDataView();
         },
+
+        onColumnPress: function (oEvent) {
+           
+            const oColumItem = oEvent.getSource();
+            
+            const oClickedItemData = oColumItem.getBindingContext("oProductModel").getObject();
+            
+            this.getOwnerComponent().getRouter().navTo("ProductDetail", {
+                product_number: oClickedItemData.product_number
+            });
+        },
+
+
         onUpdateProduct: function () {
             var oView = this.getView();
             if (!this.nameDialog) {
